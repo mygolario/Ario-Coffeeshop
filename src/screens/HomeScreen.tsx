@@ -13,8 +13,8 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
 import { AppText } from '../components/AppText';
 import { Tag } from '../components/Tag';
+import { SearchBar } from '../components/SearchBar';
 import { ProductCard } from '../components/ProductCard';
-import { IconButton } from '../components/IconButton';
 import { products } from '../data/products';
 import { useCartStore } from '../store/cartStore';
 import { colors, spacing } from '../theme';
@@ -61,23 +61,11 @@ export const HomeScreen: React.FC = () => {
           </View>
         </View>
         
-        <View style={styles.searchContainer}>
-          <Ionicons name="search" size={20} color={colors.textSecondary} style={styles.searchIcon} />
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Search coffee"
-            placeholderTextColor={colors.textSecondary}
-            value={searchQuery}
-            onChangeText={setSearchQuery}
-          />
-          <IconButton
-            icon="options"
-            onPress={() => {}}
-            backgroundColor={colors.primary}
-            color={colors.white}
-            size={20}
-          />
-        </View>
+        <SearchBar
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+          onFilterPress={() => {}}
+        />
       </View>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
@@ -152,22 +140,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: spacing.xs,
-  },
-  searchContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: colors.white,
-    borderRadius: 16,
-    paddingHorizontal: spacing.md,
-    height: 50,
-  },
-  searchIcon: {
-    marginRight: spacing.sm,
-  },
-  searchInput: {
-    flex: 1,
-    fontSize: 16,
-    color: colors.textPrimary,
   },
   content: {
     flex: 1,

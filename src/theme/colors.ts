@@ -1,9 +1,11 @@
 export const colors = {
   primary: '#C67C4E',        // brown buttons, highlights
-  secondary: '#EDD6C8',      // light cream
+  cream: '#EDD6C8',          // light cream
+  secondary: '#EDD6C8',      // alias for cream (backward compatibility)
   textPrimary: '#313131',    // dark text
   textSecondary: '#6A6A6A',  // subtle gray
-  border: '#E3E3E3',
+  gray: '#E3E3E3',            // border gray
+  border: '#E3E3E3',         // alias for gray (backward compatibility)
   background: '#F9F2ED',
   white: '#FFFFFF',
   danger: '#FF3B30',

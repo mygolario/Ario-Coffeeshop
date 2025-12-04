@@ -1,11 +1,17 @@
+import {
+  useFonts,
+  Sora_400Regular,
+  Sora_500Medium,
+  Sora_600SemiBold,
+  Sora_700Bold,
+} from '@expo-google-fonts/sora';
+
 export const typography = {
-  // Using system fonts that are close to Sora
-  // For production, you could use expo-google-fonts/sora
   fontFamily: {
-    regular: 'System',
-    medium: 'System',
-    semiBold: 'System',
-    bold: 'System',
+    regular: 'Sora_400Regular',
+    medium: 'Sora_500Medium',
+    semiBold: 'Sora_600SemiBold',
+    bold: 'Sora_700Bold',
   },
   fontSize: {
     xs: 12,
@@ -22,5 +28,16 @@ export const typography = {
     normal: 1.5,
     relaxed: 1.75,
   },
+};
+
+// Export font loading hook
+export const useSoraFonts = () => {
+  const [fontsLoaded] = useFonts({
+    Sora_400Regular,
+    Sora_500Medium,
+    Sora_600SemiBold,
+    Sora_700Bold,
+  });
+  return fontsLoaded;
 };
 
