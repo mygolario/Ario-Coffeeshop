@@ -84,4 +84,3 @@ export const useCartStore = create<CartStore>((set, get) => ({
     );
   },
 }));
-

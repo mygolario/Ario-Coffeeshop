@@ -29,8 +29,8 @@ export const OrderScreen: React.FC = () => {
   }).filter(item => item.product !== undefined);
 
   const subtotal = getSubtotal();
-  const total = getTotal();
-  const deliveryFee = 1.0;
+  const total = getTotal(deliveryType);
+  const deliveryFee = deliveryType === 'Deliver' ? 1.0 : 0.0;
   const oldDeliveryFee = 2.0;
 
   const handleOrder = () => {
@@ -195,23 +195,25 @@ export const OrderScreen: React.FC = () => {
                 $ {subtotal.toFixed(2)}
               </AppText>
             </View>
-            <View style={styles.summaryRow}>
-              <AppText size="base" color={colors.textSecondary}>
-                Delivery Fee
-              </AppText>
-              <View style={styles.deliveryFeeRow}>
-                <AppText
-                  size="base"
-                  color={colors.textSecondary}
-                  style={styles.strikethrough}
-                >
-                  $ {oldDeliveryFee.toFixed(2)}
+            {deliveryType === 'Deliver' && (
+              <View style={styles.summaryRow}>
+                <AppText size="base" color={colors.textSecondary}>
+                  Delivery Fee
                 </AppText>
-                <AppText size="base" variant="medium" style={styles.newPrice}>
-                  $ {deliveryFee.toFixed(2)}
-                </AppText>
+                <View style={styles.deliveryFeeRow}>
+                  <AppText
+                    size="base"
+                    color={colors.textSecondary}
+                    style={styles.strikethrough}
+                  >
+                    $ {oldDeliveryFee.toFixed(2)}
+                  </AppText>
+                  <AppText size="base" variant="medium" style={styles.newPrice}>
+                    $ {deliveryFee.toFixed(2)}
+                  </AppText>
+                </View>
               </View>
-            </View>
+            )}
             <View style={[styles.summaryRow, styles.totalRow]}>
               <AppText size="lg" variant="bold">
                 Total
